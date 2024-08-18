@@ -1,0 +1,90 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.swp
+
+# C/C++
+*.o
+*.obj
+*.exe
+*.out
+*.log
+
+# Ruby
+*.gem
+*.rbc
+.bundle
+log/
+tmp/
+
+# JavaScript/TypeScript
+*.tsbuildinfo
+dist/
+build/
+*.d.ts
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Environment Variables
+.env
+
+# Misc
+*.log
+*.lock
+*.tmp
+*.bak
+*.swp
+
+# Archives
+*.7z
+*.zip
+*.tar.gz
+*.rar
+
+# Compiled binaries
+*.dll
+*.so
+*.dylib
+
+# Testing files
+*.coverage
+*.cover
+*.result
+*.test
+
+# Logs
+*.log
+
+# Backup files
+*~
