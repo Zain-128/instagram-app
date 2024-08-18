@@ -35,4 +35,17 @@ const userLoginSchema = Joi.object({
     "string.min": "Password must be at least 6 characters",
   }),
 });
-export { userSchema, userLoginSchema };
+
+// Custom validator for MongoDB ObjectId
+const objectIdValidator = (value, helpers) => {
+  if (!/^[0-9a-fA-F]{24}$/.test(value)) {
+    return helpers.message("Invalid ObjectId");
+  }
+  return value;
+};
+
+const objectIdSchema = Joi.string().custom(
+  objectIdValidator,
+  "MongoDB ObjectId"
+);
+export { userSchema, userLoginSchema, objectIdSchema };

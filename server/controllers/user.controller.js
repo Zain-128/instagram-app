@@ -1,7 +1,11 @@
 import UserModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { userLoginSchema, userSchema } from "../constants/valiation.schemas.js";
+import {
+  objectIdSchema,
+  userLoginSchema,
+  userSchema,
+} from "../constants/valiation.schemas.js";
 
 export const registerUser = async (req, res, next) => {
   try {
@@ -88,7 +92,7 @@ export const loginUser = async (req, res, next) => {
     return res.status(200).json({
       message: "User Logged in SuccessfULLY !",
       success: true,
-      data: user,
+      data: { ...user, token },
     });
   } catch (error) {
     return next(error);
@@ -102,6 +106,29 @@ export const logoutUser = async (req, res, next) => {
       message: "User Logged out SuccessfULLY !",
       success: true,
       data: null,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const getUserProfile = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const { error } = objectIdSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+
+    let user = await UserModel.findById(id);
+
+    user = new USERDTO(user);
+
+    return res.status(200).json({
+      message: "User Fetched Successfully !",
+      success: true,
+      data: user,
     });
   } catch (error) {
     return next(error);
