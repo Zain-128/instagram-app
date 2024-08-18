@@ -3,6 +3,7 @@ import CookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import { ConnectToMongo } from "./config/db.connect.js";
+import { ErrorHandler } from "./middlewares/ErrorHandler.js";
 const app = express();
 
 dotenv.config({});
@@ -18,6 +19,7 @@ app.use(
   })
 );
 
+app.use(ErrorHandler);
 app.listen(process.env.PORT, () => {
   ConnectToMongo();
   console.log(`Server is Running !`);
